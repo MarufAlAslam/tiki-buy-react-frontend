@@ -117,14 +117,24 @@ const Main = () => {
             <img src={email} className="block mx-auto mb-2" alt="" />
             <span className="text-white">EMAIL</span>
           </button>
-          <button className="btn text-center modal-btn">
+          <a
+            href="https://telegram.org/"
+            target="_blank"
+            className="btn text-center modal-btn"
+            rel="noreferrer"
+          >
             <img src={telegram} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TELEGRAM</span>
-          </button>
-          <button className="btn text-center modal-btn">
+          </a>
+          <a
+            href="https://twitter.com/"
+            target="_blank"
+            className="btn text-center modal-btn"
+            rel="noreferrer"
+          >
             <img src={twitter} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TWITTER</span>
-          </button>
+          </a>
         </div>
       </div>
 

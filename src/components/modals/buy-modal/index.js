@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import Typewriter from "typewriter-effect";
 
 const BuyModal = ({ handleModal }) => {
   return (
@@ -22,10 +23,26 @@ const BuyModal = ({ handleModal }) => {
         </div>
         <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
           <a href="/" className="text-[#00f902] text-xl uppercase block">
-            BUY $tiki on BSC
+            <Typewriter
+              className="text-[#00f902] uppercase block"
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("BUY $tiki on BSC")
+                  .pauseFor(1000)
+                  .start();
+              }}
+            />
           </a>
           <a href="/" className="text-[#00f902] text-xl uppercase block">
-            BUY $tiki on ETH
+            <Typewriter
+              className="text-[#00f902] uppercase block"
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("BUY $tiki on ETH")
+                  .pauseFor(1000)
+                  .start();
+              }}
+            />
           </a>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import Typewriter from "typewriter-effect";
 
 const EmailModal = ({ handleModal }) => {
   return (
@@ -27,7 +28,15 @@ const EmailModal = ({ handleModal }) => {
               href="mailto:tiki@tikifinance.com"
               className="text-[#00f902] uppercase block"
             >
-              tiki@tikifinance.com
+              <Typewriter
+                className="text-[#00f902] uppercase block"
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString("tiki@tikifinance.com")
+                    .pauseFor(1000)
+                    .start();
+                }}
+              />
             </a>
           </div>
           <div className="mt-4">
@@ -36,7 +45,15 @@ const EmailModal = ({ handleModal }) => {
               href="mailto:development@tikifinance.com"
               className="text-[#00f902] uppercase block"
             >
-              Development@tikifinance.com
+              <Typewriter
+                className="text-[#00f902] uppercase block"
+                onInit={(typewriter) => {
+                  typewriter
+                    .typeString("Development@tikifinance.com")
+                    .pauseFor(1000)
+                    .start();
+                }}
+              />
             </a>
           </div>
         </div>

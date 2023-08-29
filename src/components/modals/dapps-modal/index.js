@@ -21,10 +21,18 @@ const DappsModal = ({ handleModal }) => {
           </div>
         </div>
         <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-          <a href="/" className="text-[#00f902] text-xl uppercase block">
+          <a
+            target="_blank"
+            href="/"
+            className="text-[#00f902] text-xl uppercase block"
+          >
             Reward Manager
           </a>
-          <a href="/" className="text-[#00f902] text-xl uppercase block">
+          <a
+            target="_blank"
+            href="/"
+            className="text-[#00f902] text-xl uppercase block"
+          >
             $tiki SaaS
           </a>
         </div>

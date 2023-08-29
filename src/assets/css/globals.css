@@ -11,7 +11,17 @@ main.main {
   background: #000;
   display: inline-flex;
   padding: 5px 10px;
+  transition: 0.5s;
+}
+
+.modal-btn:hover span {
+  transform: scale(1.1);
 }
 .modal-btn img {
   height: 80px;
+}
+
+.Typewriter {
+  color: #00f902;
+  font-size: 20px;
 }
