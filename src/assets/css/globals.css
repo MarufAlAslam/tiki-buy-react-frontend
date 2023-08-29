@@ -1,0 +1,17 @@
+main.main {
+  background: url("../img/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 80px);
+}
+
+.modal-btn span {
+  border: 2px solid #00f902;
+  background: #000;
+  display: inline-flex;
+  padding: 5px 10px;
+}
+.modal-btn img {
+  height: 80px;
+}
