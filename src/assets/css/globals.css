@@ -3,7 +3,7 @@ main.main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 76px);
 }
 
 .modal-btn span {
