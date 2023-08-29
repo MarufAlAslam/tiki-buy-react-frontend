@@ -25,3 +25,35 @@ main.main {
   color: #00f902;
   font-size: 20px;
 }
+
+@media screen and (max-width: 992px) {
+  marquee a {
+    margin: 0 20px;
+  }
+  .modal-btn img {
+    height: 45px;
+  }
+  .buttons .flex {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .buttons .flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .modal-btn span {
+    font-size: 12px;
+  }
+  marquee a {
+    margin: 0 30px;
+  }
+  marquee .flex {
+    gap: 5px !important;
+  }
+  .modal-btn img {
+    height: 60px;
+  }
+}
