@@ -13,10 +13,12 @@ import telegram from "../../assets/img/telegram.png";
 import twitter from "../../assets/img/twitter.png";
 import BuyModal from "../modals/buy-modal";
 import DappsModal from "../modals/dapps-modal";
+import EmailModal from "../modals/email-modal";
 
 const Main = () => {
   const [visibleBuy, setVisibleBuy] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
+  const [visibleEmail, setVisibleEmail] = React.useState(false);
 
   const handleBuyModal = () => {
     setVisibleBuy(!visibleBuy);
@@ -24,6 +26,10 @@ const Main = () => {
 
   const handleDappsModal = () => {
     setVisibleDapps(!visibleDapps);
+  };
+
+  const handleEmailModal = () => {
+    setVisibleEmail(!visibleEmail);
   };
   return (
     <main className="main flex flex-col justify-between items-start p-4">
@@ -69,7 +75,10 @@ const Main = () => {
             <img src={roadmap} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ROADMAP</span>
           </button>
-          <button className="btn text-center modal-btn">
+          <button
+            className="btn text-center modal-btn"
+            onClick={handleEmailModal}
+          >
             <img src={email} className="block mx-auto mb-2" alt="" />
             <span className="text-white">EMAIL</span>
           </button>
@@ -87,6 +96,7 @@ const Main = () => {
       {/* modals here */}
       {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
+      {visibleEmail && <EmailModal handleModal={handleEmailModal} />}
     </main>
   );
 };
