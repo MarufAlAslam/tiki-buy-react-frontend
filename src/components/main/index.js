@@ -17,6 +17,7 @@ import EmailModal from "../modals/email-modal";
 import WhitepaperModal from "../modals/whitepaper-modal";
 import ChartModal from "../modals/chart-modal";
 import AboutModal from "../modals/about-modal";
+import RoadmapModal from "../modals/roadmap-modal";
 
 const Main = () => {
   const [visibleBuy, setVisibleBuy] = React.useState(false);
@@ -25,6 +26,7 @@ const Main = () => {
   const [visibleWhitepaper, setVisibleWhitepaper] = React.useState(false);
   const [visibleChart, setVisibleChart] = React.useState(false);
   const [visibleAbout, setVisibleAbout] = React.useState(false);
+  const [visibleRoadmap, setVisibleRoadmap] = React.useState(false);
 
   const handleBuyModal = () => {
     setVisibleBuy(!visibleBuy);
@@ -48,6 +50,9 @@ const Main = () => {
 
   const handleAboutModal = () => {
     setVisibleAbout(!visibleAbout);
+  };
+  const handleRoadmapModal = () => {
+    setVisibleRoadmap(!visibleRoadmap);
   };
   return (
     <main className="main flex flex-col justify-between items-start p-4">
@@ -98,7 +103,10 @@ const Main = () => {
             <img src={whitepaper} className="block mx-auto mb-2" alt="" />
             <span className="text-white">WHITEPAPER</span>
           </button>
-          <button className="btn text-center modal-btn">
+          <button
+            className="btn text-center modal-btn"
+            onClick={handleRoadmapModal}
+          >
             <img src={roadmap} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ROADMAP</span>
           </button>
@@ -129,6 +137,7 @@ const Main = () => {
       )}
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
       {visibleAbout && <AboutModal handleModal={handleAboutModal} />}
+      {visibleRoadmap && <RoadmapModal handleModal={handleRoadmapModal} />}
     </main>
   );
 };
