@@ -3,7 +3,7 @@ main.main {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: calc(100vh - 76px);
+  min-height: calc(100vh - 76px);
 }
 
 .modal-btn span {
@@ -40,10 +40,6 @@ main.main {
 }
 
 @media screen and (max-width: 767px) {
-  .buttons .flex {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
   .modal-btn span {
     font-size: 12px;
   }
@@ -55,5 +51,12 @@ main.main {
   }
   .modal-btn img {
     height: 60px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .buttons .flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
