@@ -13,7 +13,7 @@ const ChartModal = ({ handleModal }) => {
       <div className="modal w-[500px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
         <div className="modal-header bg-[#00F902] rounded-t-[10px]">
           <div className="flex justify-between items-center p-2">
-            <p className="text-xl text-black">DAPPS</p>
+            <p className="text-xl text-black">CHART</p>
             <button
               className="modal-close cursor-pointer"
               onClick={handleModal}
