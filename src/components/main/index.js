@@ -14,11 +14,13 @@ import twitter from "../../assets/img/twitter.png";
 import BuyModal from "../modals/buy-modal";
 import DappsModal from "../modals/dapps-modal";
 import EmailModal from "../modals/email-modal";
+import WhitepaperModal from "../modals/whitepaper-modal";
 
 const Main = () => {
   const [visibleBuy, setVisibleBuy] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
   const [visibleEmail, setVisibleEmail] = React.useState(false);
+  const [visibleWhitepaper, setVisibleWhitepaper] = React.useState(false);
 
   const handleBuyModal = () => {
     setVisibleBuy(!visibleBuy);
@@ -30,6 +32,10 @@ const Main = () => {
 
   const handleEmailModal = () => {
     setVisibleEmail(!visibleEmail);
+  };
+
+  const handleWhitepaperModal = () => {
+    setVisibleWhitepaper(!visibleWhitepaper);
   };
   return (
     <main className="main flex flex-col justify-between items-start p-4">
@@ -67,7 +73,10 @@ const Main = () => {
             <img src={about} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ABOUT</span>
           </button>
-          <button className="btn text-center modal-btn">
+          <button
+            className="btn text-center modal-btn"
+            onClick={handleWhitepaperModal}
+          >
             <img src={whitepaper} className="block mx-auto mb-2" alt="" />
             <span className="text-white">WHITEPAPER</span>
           </button>
@@ -97,6 +106,9 @@ const Main = () => {
       {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleEmail && <EmailModal handleModal={handleEmailModal} />}
+      {visibleWhitepaper && (
+        <WhitepaperModal handleModal={handleWhitepaperModal} />
+      )}
     </main>
   );
 };
