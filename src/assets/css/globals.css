@@ -25,6 +25,10 @@ main.main {
   color: #00f902;
   font-size: 20px;
 }
+.buttons {
+  position: relative;
+  z-index: 20000000;
+}
 
 @media screen and (max-width: 992px) {
   marquee a {
