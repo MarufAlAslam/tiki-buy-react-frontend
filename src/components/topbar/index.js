@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 import React, { useEffect } from "react";
 import BuyModal from "../modals/buy-modal";
+import ChartModal from "../modals/chart-modal";
+import DappsModal from "../modals/dapps-modal";
+import BurnedModal from "../modals/burned-modal";
 
 const Topbar = () => {
   const [tikiPrice, setTikiPrice] = React.useState(0.09);
@@ -23,33 +26,131 @@ const Topbar = () => {
       });
   }, []);
   const [visibleBuy, setVisibleBuy] = React.useState(false);
+  const [visibleChart, setVisibleChart] = React.useState(false);
+  const [visibleDapps, setVisibleDapps] = React.useState(false);
+  const [visibleBurned, setVisibleBurned] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [visibleBg, setVisibleBg] = React.useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleBuyModal = () => {
     setVisibleBuy(!visibleBuy);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
+  const handleChartModal = () => {
+    setVisibleChart(!visibleChart);
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+  const handleDappsModal = () => {
+    setVisibleDapps(!visibleDapps);
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+  const handleBurnedModal = () => {
+    setVisibleBurned(!visibleBurned);
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+
+  const hideAllModals = () => {
+    setVisibleBuy(false);
+    setVisibleDapps(false);
+    setVisibleChart(false);
+    setVisibleBurned(false);
+
+    if (windowWidth < 768) {
+      setVisibleBg(false);
+    }
+  };
+  const scrollableDiv = (
+    <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
+      <button onClick={handleBuyModal} className="text-xl">
+        BUY BUY BUY BUY
+      </button>
+      <button onClick={handleBuyModal} className="text-xl">
+        TIKI PRICE: ${tikiPrice}
+      </button>
+      <button onClick={handleDappsModal} className="text-xl">
+        REWARDS: BNB
+      </button>
+      <button onClick={handleBurnedModal} className="text-xl">
+        BURNED: 5000
+      </button>
+      <a href="/" className="text-xl">
+        SUPPLY: 999000
+      </a>
+    </div>
+  );
+
+  // repeat scrollableDiv unlimited times
+  const scrollableDivs = Array.from({ length: 1000 }, () => scrollableDiv);
+
   return (
     // eslint-disable-next-line jsx-a11y/no-distracting-elements
     <>
       {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
+      {visibleChart && <ChartModal handleModal={handleChartModal} />}
+      {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
+      {visibleBurned && <BurnedModal handleModal={handleBurnedModal} />}
+      {visibleBg && (
+        <div
+          onClick={hideAllModals}
+          className="modal-bg bg-black opacity-20 fixed top-0 left-0 w-full h-screen z-50"
+        ></div>
+      )}
       <marquee
-        behavior=""
+        behavior="slide"
         id="my-marquee"
-        direction=""
+        loo
+        direction="left"
         className="py-2 bg-black mb-[-5px] relative"
       >
         <div className="track flex justify-between items-center">
-          <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
+          {scrollableDivs}
+          {/* <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
+            </button>
+            <a href="/" className="text-xl">
+              SUPPLY: 999000
             </a>
+          </div> */}
+          {/* <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
+            <button onClick={handleBuyModal} className="text-xl">
+              BUY BUY BUY BUY
+            </button>
+            <button onClick={handleBuyModal} className="text-xl">
+              TIKI PRICE: ${tikiPrice}
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
+              REWARDS: BNB
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
+              BURNED: 5000
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -58,15 +159,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -75,15 +176,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -92,15 +193,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -109,15 +210,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -126,15 +227,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -143,15 +244,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -160,15 +261,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -177,15 +278,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -194,15 +295,15 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
+            <button onClick={handleBuyModal} className="text-xl">
               TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
               REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
               BURNED: 5000
-            </a>
+            </button>
             <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
@@ -211,36 +312,19 @@ const Topbar = () => {
             <button onClick={handleBuyModal} className="text-xl">
               BUY BUY BUY BUY
             </button>
-            <a href="/" className="text-xl">
-              TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
-              REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
-              BURNED: 5000
-            </a>
-            <a href="/" className="text-xl">
-              SUPPLY: 999000
-            </a>
-          </div>
-          <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
             <button onClick={handleBuyModal} className="text-xl">
-              BUY BUY BUY BUY
+              TIKI PRICE: ${tikiPrice}
+            </button>
+            <button onClick={handleDappsModal} className="text-xl">
+              REWARDS: BNB
+            </button>
+            <button onClick={handleBurnedModal} className="text-xl">
+              BURNED: 5000
             </button>
             <a href="/" className="text-xl">
-              TIKI PRICE: ${tikiPrice}
-            </a>
-            <a href="/" className="text-xl">
-              REWARDS: BNB
-            </a>
-            <a href="/" className="text-xl">
-              BURNED: 5000
-            </a>
-            <a href="/" className="text-xl">
               SUPPLY: 999000
             </a>
-          </div>
+          </div> */}
         </div>
       </marquee>
     </>
