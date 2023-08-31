@@ -4,8 +4,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import Typewriter from "typewriter-effect";
 import typingSound from "../../../assets/music/typing.mp3";
 
-const AboutModal = ({ handleModal }) => {
+const AboutModal = ({ handleModal, isMutted }) => {
   // play typing sound when modal is opened
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const audio = new Audio(typingSound);
   audio.play();
 
@@ -18,6 +19,14 @@ const AboutModal = ({ handleModal }) => {
     },
     false
   );
+
+  useEffect(() => {
+    if (isMutted) {
+      audio.muted = true;
+    } else {
+      audio.muted = false;
+    }
+  }, [audio, isMutted]);
 
   // stop typing sound when modal is closed
   const stopAudio = () => {

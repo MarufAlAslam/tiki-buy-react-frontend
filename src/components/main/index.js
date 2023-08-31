@@ -25,7 +25,7 @@ import TelegramModal from "../modals/telegram-modal";
 
 // import clickSound from "../../assets/music/click.mp3";
 
-const Main = () => {
+const Main = ({ handleMute }) => {
   const [visibleBuy, setVisibleBuy] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
   const [visibleEmail, setVisibleEmail] = React.useState(false);
@@ -143,19 +143,16 @@ const Main = () => {
     }
   };
 
-  const handleMute = () => {
-    setIsMutted(!isMutted);
+  const audioContext = new AudioContext();
+  const gainNode = audioContext.createGain();
 
-    if (isMutted) {
-      // mute the site
-      if (window.AudioContext || window.webkitAudioContext) {
-        const audioContext = new (window.AudioContext ||
-          window.webkitAudioContext)();
-        audioContext.suspend();
-      }
-    } else {
-      // unmute the site
-    }
+  const audioSource = audioContext.createBufferSource();
+  audioSource.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  const handleMuteBtn = () => {
+    setIsMutted(!isMutted);
+    handleMute();
   };
 
   return (
@@ -167,7 +164,7 @@ const Main = () => {
         ></div>
       )}
       <div className="text-end w-full">
-        <button className="btn" onClick={handleMute}>
+        <button className="btn" onClick={handleMuteBtn}>
           {isMutted ? (
             <img src={mute} className="ml-auto block w-[60px]" alt="" />
           ) : (
@@ -254,15 +251,21 @@ const Main = () => {
 
       {/* modals here */}
       {visibleMusic && <MusicModal handleModal={handleMusicModal} />}
-      {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
+      {visibleBuy && (
+        <BuyModal isMutted={isMutted} handleModal={handleBuyModal} />
+      )}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleEmail && <EmailModal handleModal={handleEmailModal} />}
       {visibleWhitepaper && (
         <WhitepaperModal handleModal={handleWhitepaperModal} />
       )}
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
-      {visibleAbout && <AboutModal handleModal={handleAboutModal} />}
-      {visibleRoadmap && <RoadmapModal handleModal={handleRoadmapModal} />}
+      {visibleAbout && (
+        <AboutModal isMutted={isMutted} handleModal={handleAboutModal} />
+      )}
+      {visibleRoadmap && (
+        <RoadmapModal isMutted={isMutted} handleModal={handleRoadmapModal} />
+      )}
       {visibleTwitter && <TwitterModal handleModal={handleTwitterModal} />}
       {visibleTelegram && <TelegramModal handleModal={handleTelegramModal} />}
     </main>

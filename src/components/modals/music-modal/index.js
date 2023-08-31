@@ -9,10 +9,14 @@ import forwardRight from "../../../assets/img/farword-right.png";
 import play from "../../../assets/img/play.png";
 import pause from "../../../assets/img/pause.png";
 
+// import song from "../../../assets/music/song.mp3";
+
 const MusicModal = ({ handleModal }) => {
+  // const audio = new Audio(song);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
+    // isPlaying && audio.play();
   };
   const bounds = {
     left: -450,

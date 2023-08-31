@@ -8,9 +8,18 @@ import Typewriter from "typewriter-effect";
 // import loader from "../../assets/img/loader.gif";
 
 const MainPage = () => {
+  const audio = new Audio(clickSound);
+  // const [muted, setMuted] = React.useState(false);
   const handleClick = () => {
-    const audio = new Audio(clickSound);
     audio.play();
+  };
+
+  // const handleMuteTyping = (typing) => {
+  //   typing.muted = !typing.muted;
+  // };
+
+  const handleMute = () => {
+    audio.muted = !audio.muted;
   };
 
   // show loader before page is loaded
@@ -48,7 +57,7 @@ const MainPage = () => {
         </div>
       )}
       <Topbar />
-      <Main />
+      <Main handleMute={handleMute} />
     </div>
   );
 };

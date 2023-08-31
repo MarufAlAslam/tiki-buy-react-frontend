@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import Typewriter from "typewriter-effect";
 import typingSound from "../../../assets/music/typing.mp3";
 
-const RoadmapModal = ({ handleModal }) => {
+const RoadmapModal = ({ handleModal, isMutted }) => {
   const bounds = {
     left: -450,
     right: 450, // Change this to your desired maximum x-coordinate
@@ -12,8 +12,17 @@ const RoadmapModal = ({ handleModal }) => {
     bottom: 100, // Change this to your desired maximum y-coordinate
   };
   // play typing sound when modal is opened
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const audio = new Audio(typingSound);
   audio.play();
+
+  useEffect(() => {
+    if (isMutted) {
+      audio.muted = true;
+    } else {
+      audio.muted = false;
+    }
+  }, [audio, isMutted]);
 
   // stop typing sound when modal is closed
   const stopAudio = () => {
