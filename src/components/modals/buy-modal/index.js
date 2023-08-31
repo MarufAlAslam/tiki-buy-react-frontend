@@ -63,7 +63,12 @@ const BuyModal = ({ handleModal }) => {
               </div>
             </div>
             <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-              <a href="/" className="text-[#00f902] text-xl uppercase block">
+              <a
+                href="https://rubic.exchange/widget"
+                target="_blank"
+                className="text-[#00f902] text-xl uppercase block"
+                rel="noreferrer"
+              >
                 <Typewriter
                   className="text-[#00f902] uppercase block"
                   onInit={(typewriter) => {
@@ -76,7 +81,12 @@ const BuyModal = ({ handleModal }) => {
                   }}
                 />
               </a>
-              <a href="/" className="text-[#00f902] text-xl uppercase block">
+              <a
+                href="https://rubic.exchange/widget"
+                target="_blank"
+                className="text-[#00f902] text-xl uppercase block"
+                rel="noreferrer"
+              >
                 <Typewriter
                   className="text-[#00f902] uppercase block"
                   onInit={(typewriter) => {

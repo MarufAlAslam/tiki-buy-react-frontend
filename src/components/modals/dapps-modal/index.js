@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import Draggable from "react-draggable";
 import { AiOutlineClose } from "react-icons/ai";
@@ -8,6 +9,10 @@ const DappsModal = ({ handleModal }) => {
     right: 450, // Change this to your desired maximum x-coordinate
     top: -200,
     bottom: 200, // Change this to your desired maximum y-coordinate
+  };
+  const [isBtnVisible, setIsBtnVisible] = React.useState(true);
+  const handleBtnVisible = () => {
+    setIsBtnVisible(!isBtnVisible);
   };
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
@@ -28,27 +33,33 @@ const DappsModal = ({ handleModal }) => {
                 <p className="text-xl text-black pl-3">DAPPS</p>
                 <button
                   className="modal-close cursor-pointer p-3"
-                  onClick={handleModal}
+                  onClick={isBtnVisible ? handleModal : handleBtnVisible}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
                 </button>
               </div>
             </div>
             <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-              <a
-                target="_blank"
-                href="/"
-                className="text-[#00f902] text-xl uppercase block"
-              >
-                Reward Manager
-              </a>
-              <a
-                target="_blank"
-                href="/"
-                className="text-[#00f902] text-xl uppercase block"
-              >
-                $tiki SaaS
-              </a>
+              {isBtnVisible ? (
+                <div className="btns" onClick={handleBtnVisible}>
+                  <button className="text-[#00f902] text-xl uppercase block">
+                    Reward Manager
+                  </button>
+                  <button
+                    onClick={handleBtnVisible}
+                    className="text-[#00f902] text-xl uppercase block"
+                  >
+                    $tiki SaaS
+                  </button>
+                </div>
+              ) : (
+                <iframe
+                  src="http://coingeco.com/"
+                  width={"100%"}
+                  height={"300px"}
+                  frameborder="0"
+                ></iframe>
+              )}
             </div>
           </div>
         </div>

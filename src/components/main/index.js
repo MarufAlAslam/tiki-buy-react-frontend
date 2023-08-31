@@ -20,6 +20,8 @@ import ChartModal from "../modals/chart-modal";
 import AboutModal from "../modals/about-modal";
 import RoadmapModal from "../modals/roadmap-modal";
 import MusicModal from "../modals/music-modal";
+import TwitterModal from "../modals/twitter-modal";
+import TelegramModal from "../modals/telegram-modal";
 
 // import clickSound from "../../assets/music/click.mp3";
 
@@ -33,6 +35,8 @@ const Main = () => {
   const [visibleRoadmap, setVisibleRoadmap] = React.useState(false);
   const [visibleBg, setVisibleBg] = React.useState(false);
   const [visibleMusic, setVisibleMusic] = React.useState(false);
+  const [visibleTwitter, setVisibleTwitter] = React.useState(false);
+  const [visibleTelegram, setVisibleTelegram] = React.useState(false);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [isMutted, setIsMutted] = React.useState(false);
 
@@ -106,6 +110,21 @@ const Main = () => {
       setVisibleBg(true);
     }
   };
+  const handleTwitterModal = () => {
+    setVisibleTwitter(!visibleTwitter);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+
+  const handleTelegramModal = () => {
+    setVisibleTelegram(!visibleTelegram);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
 
   const hideAllModals = () => {
     setVisibleBuy(false);
@@ -115,6 +134,9 @@ const Main = () => {
     setVisibleChart(false);
     setVisibleAbout(false);
     setVisibleRoadmap(false);
+    setVisibleMusic(false);
+    setVisibleTwitter(false);
+    setVisibleTelegram(false);
 
     if (windowWidth < 768) {
       setVisibleBg(false);
@@ -191,15 +213,13 @@ const Main = () => {
             <img src={about} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ABOUT</span>
           </button>
-          <a
-            href="https://twitter.com/"
-            target="_blank"
+          <button
+            onClick={handleTwitterModal}
             className="btn text-center modal-btn"
-            rel="noreferrer"
           >
             <img src={twitter} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TWITTER</span>
-          </a>
+          </button>
           <button
             className="btn text-center modal-btn"
             onClick={handleWhitepaperModal}
@@ -221,16 +241,14 @@ const Main = () => {
             <img src={email} className="block mx-auto mb-2" alt="" />
             <span className="text-white">EMAIL</span>
           </button>
-          <a
-            href="https://telegram.org/"
-            target="_blank"
+          <div className="md:hidden block"></div>
+          <button
+            onClick={handleTelegramModal}
             className="btn text-center modal-btn"
-            rel="noreferrer"
           >
             <img src={telegram} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TELEGRAM</span>
-          </a>
-          
+          </button>
         </div>
       </div>
 
@@ -245,6 +263,8 @@ const Main = () => {
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
       {visibleAbout && <AboutModal handleModal={handleAboutModal} />}
       {visibleRoadmap && <RoadmapModal handleModal={handleRoadmapModal} />}
+      {visibleTwitter && <TwitterModal handleModal={handleTwitterModal} />}
+      {visibleTelegram && <TelegramModal handleModal={handleTelegramModal} />}
     </main>
   );
 };

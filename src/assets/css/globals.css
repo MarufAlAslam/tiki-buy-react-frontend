@@ -9,6 +9,16 @@ main.main {
 * {
   cursor: url(../img/hand.ico), auto !important;
 }
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 .modal-btn span {
   border: 2px solid #00f902;
@@ -61,6 +71,13 @@ button.btn.play-pause {
   z-index: 10000000;
 }
 
+.scrollable {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
 @media screen and (max-width: 992px) {
   marquee a {
     margin: 0 20px;
@@ -87,14 +104,17 @@ button.btn.play-pause {
   .modal-btn img {
     height: 60px;
   }
-  button.modal-close.cursor-pointer {
+  /* button.modal-close.cursor-pointer {
     display: none;
-  }
+  } */
 }
 
 @media screen and (max-width: 580px) {
   .buttons .flex {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+  }
+  .modal-bg {
+    z-index: 30000000;
   }
 }
