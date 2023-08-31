@@ -64,7 +64,7 @@ const BuyModal = ({ handleModal, isMutted }) => {
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">BUY</p>
                 <button
-                  className="modal-close p-3 cursor-pointer"
+                  className="modal-close px-3 cursor-pointer"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />

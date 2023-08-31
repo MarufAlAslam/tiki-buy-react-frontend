@@ -30,7 +30,7 @@ const ChartModal = ({ handleModal }) => {
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">CHART</p>
                 <button
-                  className="modal-close cursor-pointer p-3"
+                  className="modal-close cursor-pointer px-3"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />

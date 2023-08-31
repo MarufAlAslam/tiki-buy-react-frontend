@@ -34,7 +34,7 @@ const WhitepaperModal = ({ handleModal }) => {
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">WHITEPAPER</p>
                 <button
-                  className="modal-close cursor-pointer p-3"
+                  className="modal-close cursor-pointer px-3"
                   onClick={isBtnVisible ? handleModal : handleBtnVisible}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
@@ -43,12 +43,14 @@ const WhitepaperModal = ({ handleModal }) => {
             </div>
             <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
               {isBtnVisible ? (
-                <button
-                  onClick={handleBtnVisible}
+                <a
+                  href={pdfFile}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-[#00f902] text-xl uppercase block"
                 >
                   VIEW WHITEPAPER
-                </button>
+                </a>
               ) : (
                 <iframe
                   src={pdfFile}

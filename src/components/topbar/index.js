@@ -25,6 +25,45 @@ const Topbar = () => {
         setTikiPrice(data?.cyberconnect?.usd);
       });
   }, []);
+  const [supply, setSupply] = React.useState(0);
+  useEffect(() => {
+    fetch(
+      "https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&apikey=H5YDBN17V3BDUYPCYMF5PCXCXBTDIF6UPQ",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        setSupply(data?.result);
+      });
+  }, []);
+
+  const [burn, setBurn] = React.useState(0);
+  useEffect(() => {
+    fetch(
+      "https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&address=0x000000000000000000000000000000000000dead&tag=latest&apikey=H5YDBN17V3BDUYPCYMF5PCXCXBTDIF6UPQ",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        setBurn(data?.result);
+      });
+  }, []);
   const [visibleBuy, setVisibleBuy] = React.useState(false);
   const [visibleChart, setVisibleChart] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
@@ -78,26 +117,67 @@ const Topbar = () => {
   };
   const scrollableDiv = (
     <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
-      <button onClick={handleBuyModal} className="text-xl">
+      <a
+        href="https://rubic.exchange/widget"
+        target="_blank"
+        // onClick={handleBuyModal}
+        className="text-xl"
+        rel="noreferrer"
+      >
         BUY BUY BUY BUY
-      </button>
-      <button onClick={handleBuyModal} className="text-xl">
+      </a>
+      <a
+        href="https://www.coingecko.com/en/global-charts"
+        target="_blank"
+        // onClick={handleBuyModal}
+        className="text-xl"
+        rel="noreferrer"
+      >
         TIKI PRICE: ${tikiPrice}
-      </button>
+      </a>
       <button onClick={handleDappsModal} className="text-xl">
         REWARDS: BNB
       </button>
       <button onClick={handleBurnedModal} className="text-xl">
-        BURNED: 5000
+        BURNED: {burn}
       </button>
       <a href="/" className="text-xl">
-        SUPPLY: 999000
+        SUPPLY: {supply}
       </a>
     </div>
   );
 
   // repeat scrollableDiv unlimited times
-  const scrollableDivs = Array.from({ length: 1000 }, () => scrollableDiv);
+  // useEffect(() => {
+  //   const marquee = document.getElementById("my-marquee");
+  //   const track = document.querySelector(".track");
+  //   const trackWidth = track.offsetWidth;
+  //   const marqueeWidth = marquee.offsetWidth;
+  //   let start = 0;
+  //   let end = trackWidth;
+  //   function scroll() {
+  //     if (end === marqueeWidth) {
+  //       start = 0;
+  //       end = trackWidth;
+  //     } else {
+  //       start++;
+  //       end++;
+  //     }
+  //     marquee.scrollLeft = start;
+  //   }
+  //   const timer = setInterval(scroll, 20);
+
+  //   return () => {
+  //     clearInterval(timer);
+  //   };
+  // }, []);
+
+  // create an array of scrollableDivs
+  const scrollableDivs = [];
+
+  for (let i = 0; i < 50; i++) {
+    scrollableDivs.push(scrollableDiv);
+  }
 
   return (
     // eslint-disable-next-line jsx-a11y/no-distracting-elements
@@ -113,7 +193,7 @@ const Topbar = () => {
         ></div>
       )}
       <marquee
-        behavior="slide"
+        behavior="scroll"
         id="my-marquee"
         loo
         direction="left"

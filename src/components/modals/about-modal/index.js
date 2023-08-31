@@ -65,7 +65,7 @@ const AboutModal = ({ handleModal, isMutted }) => {
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">ABOUT</p>
                 <button
-                  className="modal-close cursor-pointer p-3"
+                  className="modal-close cursor-pointer px-3"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
@@ -73,7 +73,7 @@ const AboutModal = ({ handleModal, isMutted }) => {
               </div>
             </div>
             <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-              <div className="scrollable h-[300px] overflow-y-auto">
+              <div className="scrollable max-h-[300px] overflow-y-auto">
                 <h2 className="text-2xl text-[#00F902] uppercase mb-4">
                   tiki TOKEN
                 </h2>

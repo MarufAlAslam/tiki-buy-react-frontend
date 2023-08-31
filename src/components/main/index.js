@@ -189,13 +189,16 @@ const Main = ({ handleMute }) => {
             <img src={buy} className="block mx-auto mb-2" alt="" />
             <span className="text-white">BUY</span>
           </button>
-          <button
+          <a
+            href="https://www.coingecko.com/en/global-charts"
+            target="_blank"
+            rel="noreferrer"
             className="btn text-center modal-btn"
-            onClick={handleChartModal}
+            // onClick={handleChartModal}
           >
             <img src={chart} className="block mx-auto mb-2" alt="" />
             <span className="text-white">CHART</span>
-          </button>
+          </a>
           <button
             className="btn text-center modal-btn"
             onClick={handleDappsModal}
@@ -210,13 +213,16 @@ const Main = ({ handleMute }) => {
             <img src={about} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ABOUT</span>
           </button>
-          <button
-            onClick={handleTwitterModal}
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            // onClick={handleTwitterModal}
             className="btn text-center modal-btn"
+            rel="noreferrer"
           >
             <img src={twitter} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TWITTER</span>
-          </button>
+          </a>
           <button
             className="btn text-center modal-btn"
             onClick={handleWhitepaperModal}
@@ -239,13 +245,16 @@ const Main = ({ handleMute }) => {
             <span className="text-white">EMAIL</span>
           </button>
           <div className="md:hidden block"></div>
-          <button
-            onClick={handleTelegramModal}
+          <a
+            // onClick={handleTelegramModal}
+            href="https://telegram.com"
+            target="_blank"
             className="btn text-center modal-btn"
+            rel="noreferrer"
           >
             <img src={telegram} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TELEGRAM</span>
-          </button>
+          </a>
         </div>
       </div>
 

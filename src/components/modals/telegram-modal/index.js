@@ -32,7 +32,7 @@ const TelegramModal = ({ handleModal }) => {
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">TELEGRAM</p>
                 <button
-                  className="modal-close cursor-pointer p-3"
+                  className="modal-close cursor-pointer px-3"
                   onClick={isBtnVisible ? handleModal : handleBtnVisible}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
