@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Topbar = () => {
+  const [tikiPrice, setTikiPrice] = React.useState(0.09);
+  useEffect(() => {
+    fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=cyberconnect&vs_currencies=usd&include_market_cap=false&include_24hr_vol=true&include_24hr_change=false&include_last_updated_at=false(eth)",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setTikiPrice(data?.cyberconnect?.usd);
+      });
+  }, []);
   return (
     // eslint-disable-next-line jsx-a11y/no-distracting-elements
     <marquee
@@ -15,7 +34,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -32,7 +51,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -49,7 +68,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -66,7 +85,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -83,7 +102,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -100,7 +119,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -117,7 +136,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -134,7 +153,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -151,7 +170,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -168,7 +187,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -185,7 +204,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
@@ -202,7 +221,7 @@ const Topbar = () => {
             BUY BUY BUY BUY
           </a>
           <a href="/" className="text-xl">
-            TIKI PRICE: $0.09
+            TIKI PRICE: ${tikiPrice}
           </a>
           <a href="/" className="text-xl">
             REWARDS: BNB
