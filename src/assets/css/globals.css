@@ -6,8 +6,8 @@ main.main {
   min-height: calc(100vh - 76px);
 }
 
-body {
-  cursor: url("../img/hand.png"), auto;
+* {
+  cursor: url(../img/hand.ico), auto;
 }
 
 .modal-btn span {
@@ -36,6 +36,9 @@ body {
 
 .flex.justify-center.items-center.fixed.top-\[50\%\].left-\[50\%\].translate-x-\[-50\%\].translate-y-\[-50\%\].z-20 {
   z-index: 200000000;
+}
+.track{
+  transform: translateX(-100%);
 }
 
 @media screen and (max-width: 992px) {
