@@ -35,9 +35,9 @@ const RoadmapModal = ({ handleModal }) => {
           <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
             <div className="modal-header bg-[#00F902] rounded-t-[10px]">
               <div className="flex justify-between items-center p-2">
-                <p className="text-xl text-black">ROADMAP</p>
+                <p className="text-xl text-black pl-3">ROADMAP</p>
                 <button
-                  className="modal-close cursor-pointer"
+                  className="modal-close cursor-pointer p-3"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />

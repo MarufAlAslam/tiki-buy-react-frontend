@@ -10,10 +10,10 @@ import play from "../../../assets/img/play.png";
 import pause from "../../../assets/img/pause.png";
 
 const MusicModal = ({ handleModal }) => {
-    const [isPlaying, setIsPlaying] = React.useState(false)
-    const handlePlayPause = () => {
-        setIsPlaying(!isPlaying)
-    }
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       <Draggable
@@ -29,9 +29,9 @@ const MusicModal = ({ handleModal }) => {
           <div className="modal md:min-w-[300px] min-w-[300px] md:w-[300px] w-[300px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
             <div className="modal-header bg-[#00F902] rounded-t-[10px]">
               <div className="flex justify-between items-center p-2">
-                <p className="text-xl text-black">MUSIC</p>
+                <p className="text-xl text-black pl-3">MUSIC</p>
                 <button
-                  className="modal-close cursor-pointer"
+                  className="modal-close cursor-pointer p-3"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
@@ -48,17 +48,19 @@ const MusicModal = ({ handleModal }) => {
                   <p className="text-lg text-center">SONG NAME</p>
                 </div>
                 <div className="controller">
-                    <button className="btn forward-left">
-                        <img src={forwardLeft} alt="" />
-                    </button>
-                    <button className="btn forward-right">
-                        <img src={forwardRight} alt="" />
-                    </button>
-                    <button className="btn play-pause" onClick={handlePlayPause}>
-                        {
-                            isPlaying ? <img src={pause} alt="" /> : <img src={play} alt="" />
-                        }
-                    </button>
+                  <button className="btn forward-left">
+                    <img src={forwardLeft} alt="" />
+                  </button>
+                  <button className="btn forward-right">
+                    <img src={forwardRight} alt="" />
+                  </button>
+                  <button className="btn play-pause" onClick={handlePlayPause}>
+                    {isPlaying ? (
+                      <img src={pause} alt="" />
+                    ) : (
+                      <img src={play} alt="" />
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
