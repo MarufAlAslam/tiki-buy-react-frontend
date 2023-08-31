@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Draggable from "react-draggable";
 import { AiOutlineClose } from "react-icons/ai";
 import Typewriter from "typewriter-effect";
+import typingSound from "../../../assets/music/typing.mp3";
 
 const AboutModal = ({ handleModal }) => {
+  // play typing sound when modal is opened
+  const audio = new Audio(typingSound);
+  audio.play();
+
+  // stop typing sound when modal is closed
+  const stopAudio = () => {
+    audio.pause();
+  };
+
+  useEffect(() => {
+    return () => {
+      stopAudio();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       <Draggable

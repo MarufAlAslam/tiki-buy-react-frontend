@@ -20,6 +20,8 @@ import ChartModal from "../modals/chart-modal";
 import AboutModal from "../modals/about-modal";
 import RoadmapModal from "../modals/roadmap-modal";
 
+// import clickSound from "../../assets/music/click.mp3";
+
 const Main = () => {
   const [visibleBuy, setVisibleBuy] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
