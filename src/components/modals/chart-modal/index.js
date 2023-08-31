@@ -5,12 +5,19 @@ import chart from "../../../assets/img/chart-main.png";
 import Draggable from "react-draggable";
 
 const ChartModal = ({ handleModal }) => {
+  const bounds = {
+    left: -450,
+    right: 450, // Change this to your desired maximum x-coordinate
+    top: -100,
+    bottom: 100, // Change this to your desired maximum y-coordinate
+  };
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       <Draggable
         className="w-full"
         position={null}
         defaultPosition={{ x: 0, y: 0 }}
+        bounds={bounds}
       >
         <div className="buy-modal absolute">
           {/* <div

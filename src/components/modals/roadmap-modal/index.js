@@ -5,6 +5,12 @@ import Typewriter from "typewriter-effect";
 import typingSound from "../../../assets/music/typing.mp3";
 
 const RoadmapModal = ({ handleModal }) => {
+  const bounds = {
+    left: -450,
+    right: 450, // Change this to your desired maximum x-coordinate
+    top: -100,
+    bottom: 100, // Change this to your desired maximum y-coordinate
+  };
   // play typing sound when modal is opened
   const audio = new Audio(typingSound);
   audio.play();
@@ -26,6 +32,7 @@ const RoadmapModal = ({ handleModal }) => {
         className="w-full"
         position={null}
         defaultPosition={{ x: 0, y: 0 }}
+        bounds={bounds}
       >
         <div className="buy-modal absolute">
           {/* <div

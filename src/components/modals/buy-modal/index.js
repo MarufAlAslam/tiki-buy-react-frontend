@@ -83,7 +83,10 @@ const BuyModal = ({ handleModal }) => {
                     typewriter
                       .typeString("BUY $tiki on ETH")
                       .pauseFor(1000)
-                      .start();
+                      .start()
+                      .callFunction(() => {
+                        stopAudio();
+                      });
                   }}
                 />
               </a>
