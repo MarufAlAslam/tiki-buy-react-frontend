@@ -6,6 +6,10 @@ main.main {
   min-height: calc(100vh - 76px);
 }
 
+body {
+  cursor: url("../img/hand.png"), auto;
+}
+
 .modal-btn span {
   border: 2px solid #00f902;
   background: #000;
@@ -28,6 +32,10 @@ main.main {
 .buttons {
   position: relative;
   z-index: 20000000;
+}
+
+.flex.justify-center.items-center.fixed.top-\[50\%\].left-\[50\%\].translate-x-\[-50\%\].translate-y-\[-50\%\].z-20 {
+  z-index: 200000000;
 }
 
 @media screen and (max-width: 992px) {
@@ -55,6 +63,9 @@ main.main {
   }
   .modal-btn img {
     height: 60px;
+  }
+  button.modal-close.cursor-pointer {
+    display: none;
   }
 }
 

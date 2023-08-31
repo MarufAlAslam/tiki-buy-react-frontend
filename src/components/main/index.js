@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import unmute from "../../assets/img/unmute.png";
+import mute from "../../assets/img/mute.png";
 
 import music from "../../assets/img/music.png";
 import buy from "../../assets/img/buy.png";
@@ -27,38 +28,117 @@ const Main = () => {
   const [visibleChart, setVisibleChart] = React.useState(false);
   const [visibleAbout, setVisibleAbout] = React.useState(false);
   const [visibleRoadmap, setVisibleRoadmap] = React.useState(false);
+  const [visibleBg, setVisibleBg] = React.useState(false);
+  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
+  const [isMutted, setIsMutted] = React.useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleBuyModal = () => {
     setVisibleBuy(!visibleBuy);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
 
   const handleDappsModal = () => {
     setVisibleDapps(!visibleDapps);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
 
   const handleEmailModal = () => {
     setVisibleEmail(!visibleEmail);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
 
   const handleWhitepaperModal = () => {
     setVisibleWhitepaper(!visibleWhitepaper);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
 
   const handleChartModal = () => {
     setVisibleChart(!visibleChart);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
 
   const handleAboutModal = () => {
     setVisibleAbout(!visibleAbout);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
   const handleRoadmapModal = () => {
     setVisibleRoadmap(!visibleRoadmap);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
   };
+
+  const hideAllModals = () => {
+    setVisibleBuy(false);
+    setVisibleDapps(false);
+    setVisibleEmail(false);
+    setVisibleWhitepaper(false);
+    setVisibleChart(false);
+    setVisibleAbout(false);
+    setVisibleRoadmap(false);
+
+    if (windowWidth < 768) {
+      setVisibleBg(false);
+    }
+  };
+
+  const handleMute = () => {
+    setIsMutted(!isMutted);
+
+    if (isMutted) {
+      // mute the site
+      if (window.AudioContext || window.webkitAudioContext) {
+        const audioContext = new (window.AudioContext ||
+          window.webkitAudioContext)();
+        audioContext.suspend();
+      }
+    } else {
+      // unmute the site
+    }
+  };
+
   return (
     <main className="main flex flex-col justify-between items-start p-4">
+      {visibleBg && (
+        <div
+          onClick={hideAllModals}
+          className="modal-bg bg-black opacity-20 fixed top-0 left-0 w-full h-screen z-50"
+        ></div>
+      )}
       <div className="text-end w-full">
-        <button className="btn">
-          <img src={unmute} className="ml-auto block" alt="" />
+        <button className="btn" onClick={handleMute}>
+          {isMutted ? (
+            <img src={mute} className="ml-auto block w-[60px]" alt="" />
+          ) : (
+            <img src={unmute} className="ml-auto block w-[60px]" alt="" />
+          )}
         </button>
       </div>
 
