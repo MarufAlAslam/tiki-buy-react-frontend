@@ -5,7 +5,7 @@ import clickSound from "../../assets/music/click.mp3";
 import Typewriter from "typewriter-effect";
 
 // import handCursor from "../../assets/img/hand.png";
-import loader from "../../assets/img/loader.gif";
+// import loader from "../../assets/img/loader.gif";
 
 const MainPage = () => {
   const handleClick = () => {
