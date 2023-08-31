@@ -9,6 +9,16 @@ const AboutModal = ({ handleModal }) => {
   const audio = new Audio(typingSound);
   audio.play();
 
+  // loop typing sound
+  audio.addEventListener(
+    "ended",
+    function () {
+      this.currentTime = 0;
+      this.play();
+    },
+    false
+  );
+
   // stop typing sound when modal is closed
   const stopAudio = () => {
     audio.pause();
@@ -18,9 +28,9 @@ const AboutModal = ({ handleModal }) => {
     return () => {
       stopAudio();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       <Draggable
