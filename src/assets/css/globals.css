@@ -7,7 +7,7 @@ main.main {
 }
 
 * {
-  cursor: url(../img/hand.ico), auto;
+  cursor: url(../img/hand.ico), auto !important;
 }
 
 .modal-btn span {
@@ -37,7 +37,7 @@ main.main {
 .flex.justify-center.items-center.fixed.top-\[50\%\].left-\[50\%\].translate-x-\[-50\%\].translate-y-\[-50\%\].z-20 {
   z-index: 200000000;
 }
-.track{
+.track {
   transform: translateX(-100%);
 }
 button.btn.forward-left {
@@ -60,7 +60,6 @@ button.btn.play-pause {
   transform: translateX(-18%);
   z-index: 10000000;
 }
-
 
 @media screen and (max-width: 992px) {
   marquee a {

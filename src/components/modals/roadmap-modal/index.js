@@ -18,7 +18,7 @@ const RoadmapModal = ({ handleModal }) => {
     return () => {
       stopAudio();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
@@ -88,7 +88,10 @@ const RoadmapModal = ({ handleModal }) => {
                       .typeString(
                         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem."
                       )
-                      .start();
+                      .start()
+                      .callFunction(() => {
+                        stopAudio();
+                      });
                   }}
                 />
               </div>

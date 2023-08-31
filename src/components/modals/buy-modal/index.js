@@ -14,18 +14,36 @@ const BuyModal = ({ handleModal }) => {
     audio.pause();
   };
 
+  // stop typing sound when typing effect is done
+  // audio.addEventListener(
+  //   "ended",
+  //   function () {
+  //     this.currentTime = 0;
+  //     this.play();
+  //   },
+  //   false
+  // );
+
   useEffect(() => {
     return () => {
       stopAudio();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const bounds = {
+    left: -450,
+    right: 450, // Change this to your desired maximum x-coordinate
+    top: -200,
+    bottom: 200, // Change this to your desired maximum y-coordinate
+  };
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       <Draggable
         className="w-full"
         position={null}
         defaultPosition={{ x: 0, y: 0 }}
+        bounds={bounds}
       >
         <div className="buy-modal absolute">
           {/* <div
@@ -35,9 +53,9 @@ const BuyModal = ({ handleModal }) => {
           <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px]] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
             <div className="modal-header bg-[#00F902] rounded-t-[10px]">
               <div className="flex justify-between items-center p-2">
-                <p className="text-xl text-black">BUY</p>
+                <p className="text-xl text-black pl-3">BUY</p>
                 <button
-                  className="modal-close cursor-pointer"
+                  className="modal-close p-3 cursor-pointer"
                   onClick={handleModal}
                 >
                   <AiOutlineClose className="text-black text-xl cursor-pointer" />
@@ -51,8 +69,10 @@ const BuyModal = ({ handleModal }) => {
                   onInit={(typewriter) => {
                     typewriter
                       .typeString("BUY $tiki on BSC")
-                      .pauseFor(1000)
-                      .start();
+                      .start()
+                      .callFunction(() => {
+                        stopAudio();
+                      });
                   }}
                 />
               </a>
