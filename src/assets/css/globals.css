@@ -40,6 +40,27 @@ main.main {
 .track{
   transform: translateX(-100%);
 }
+button.btn.forward-left {
+  position: absolute;
+  bottom: 120px;
+  left: 32%;
+  width: 30px;
+}
+button.btn.forward-right {
+  position: absolute;
+  bottom: 120px;
+  right: 28%;
+  width: 30px;
+}
+button.btn.play-pause {
+  position: absolute;
+  bottom: 73px;
+  left: 48.5%;
+  width: 30px;
+  transform: translateX(-18%);
+  z-index: 10000000;
+}
+
 
 @media screen and (max-width: 992px) {
   marquee a {

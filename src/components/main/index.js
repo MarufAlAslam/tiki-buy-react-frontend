@@ -19,6 +19,7 @@ import WhitepaperModal from "../modals/whitepaper-modal";
 import ChartModal from "../modals/chart-modal";
 import AboutModal from "../modals/about-modal";
 import RoadmapModal from "../modals/roadmap-modal";
+import MusicModal from "../modals/music-modal";
 
 // import clickSound from "../../assets/music/click.mp3";
 
@@ -31,6 +32,7 @@ const Main = () => {
   const [visibleAbout, setVisibleAbout] = React.useState(false);
   const [visibleRoadmap, setVisibleRoadmap] = React.useState(false);
   const [visibleBg, setVisibleBg] = React.useState(false);
+  const [visibleMusic, setVisibleMusic] = React.useState(false);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [isMutted, setIsMutted] = React.useState(false);
 
@@ -97,6 +99,14 @@ const Main = () => {
     }
   };
 
+  const handleMusicModal = () => {
+    setVisibleMusic(!visibleMusic);
+
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+
   const hideAllModals = () => {
     setVisibleBuy(false);
     setVisibleDapps(false);
@@ -146,7 +156,10 @@ const Main = () => {
 
       <div className="buttons w-full pb-4">
         <div className="flex justify-center items-center gap-4">
-          <button className="btn text-center modal-btn">
+          <button
+            className="btn text-center modal-btn"
+            onClick={handleMusicModal}
+          >
             <img src={music} className="block mx-auto mb-2" alt="" />
             <span className="text-white">MUSIC</span>
           </button>
@@ -178,6 +191,15 @@ const Main = () => {
             <img src={about} className="block mx-auto mb-2" alt="" />
             <span className="text-white">ABOUT</span>
           </button>
+          <a
+            href="https://twitter.com/"
+            target="_blank"
+            className="btn text-center modal-btn"
+            rel="noreferrer"
+          >
+            <img src={twitter} className="block mx-auto mb-2" alt="" />
+            <span className="text-white">TWITTER</span>
+          </a>
           <button
             className="btn text-center modal-btn"
             onClick={handleWhitepaperModal}
@@ -208,19 +230,12 @@ const Main = () => {
             <img src={telegram} className="block mx-auto mb-2" alt="" />
             <span className="text-white">TELEGRAM</span>
           </a>
-          <a
-            href="https://twitter.com/"
-            target="_blank"
-            className="btn text-center modal-btn"
-            rel="noreferrer"
-          >
-            <img src={twitter} className="block mx-auto mb-2" alt="" />
-            <span className="text-white">TWITTER</span>
-          </a>
+          
         </div>
       </div>
 
       {/* modals here */}
+      {visibleMusic && <MusicModal handleModal={handleMusicModal} />}
       {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleEmail && <EmailModal handleModal={handleEmailModal} />}
