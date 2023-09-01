@@ -159,12 +159,7 @@ const Main = ({ handleMute }) => {
 
   return (
     <main className="main flex flex-col justify-between items-start p-4">
-      {visibleBg && (
-        <div
-          onClick={hideAllModals}
-          className="modal-bg bg-black opacity-20 fixed top-0 left-0 w-full h-screen z-50"
-        ></div>
-      )}
+      {visibleBg && ""}
       <div className="text-end w-full">
         <button className="btn" onClick={handleMuteBtn}>
           {isMutted ? (

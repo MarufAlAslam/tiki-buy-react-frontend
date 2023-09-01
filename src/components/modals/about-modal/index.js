@@ -1,41 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Draggable from "react-draggable";
 import { AiOutlineClose } from "react-icons/ai";
-import Typewriter from "typewriter-effect";
-import typingSound from "../../../assets/music/typing.mp3";
+// import Typewriter from "typewriter-effect";
+// import typingSound from "../../../assets/music/typing.mp3";
 
 const AboutModal = ({ handleModal, isMutted }) => {
   console.log("isMutted", isMutted);
   // play typing sound when modal is opened
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const audio = new Audio(typingSound);
-  audio.play();
+  // const audio = new Audio(typingSound);
+  // audio.play();
 
   // loop typing sound
-  audio.addEventListener(
-    "ended",
-    function () {
-      this.currentTime = 0;
-      this.play();
-    },
-    false
-  );
+  // audio.addEventListener(
+  //   "ended",
+  //   function () {
+  //     this.currentTime = 0;
+  //     this.play();
+  //   },
+  //   false
+  // );
 
-  useEffect(() => {
-    audio.muted = isMutted;
-  }, [audio, isMutted]);
+  // useEffect(() => {
+  //   audio.muted = isMutted;
+  // }, [audio, isMutted]);
 
   // stop typing sound when modal is closed
-  const stopAudio = () => {
-    audio.pause();
-  };
+  // const stopAudio = () => {
+  //   audio.pause();
+  // };
 
-  useEffect(() => {
-    return () => {
-      stopAudio();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     stopAudio();
+  //   };
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const bounds = {
     left: -450,
@@ -74,7 +74,75 @@ const AboutModal = ({ handleModal, isMutted }) => {
                 <h2 className="text-2xl text-[#00F902] uppercase mb-4">
                   tiki TOKEN
                 </h2>
-                <Typewriter
+                <p className="text-[#00f902] uppercase block mb-3">
+                  1500s, when an unknown printer took a galley of type and
+                  scrambled it to make a type specimen book. It has survived not
+                  only five centuries, but also the leap into electronic
+                  typesetting, remaining essentially unchanged. It was
+                  popularised in the 1960s with the release of Letraset sheets
+                  containing
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                <p className="text-[#00f902] uppercase block mb-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem.
+                </p>
+                {/* <Typewriter
                   className="text-[#00f902] uppercase block"
                   onInit={(typewriter) => {
                     typewriter
@@ -118,7 +186,7 @@ const AboutModal = ({ handleModal, isMutted }) => {
                         stopAudio();
                       });
                   }}
-                />
+                /> */}
               </div>
             </div>
           </div>

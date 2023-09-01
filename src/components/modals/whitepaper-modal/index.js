@@ -61,7 +61,8 @@ const WhitepaperModal = ({ handleModal }) => {
                   <p className="text-xl text-black pl-3">WHITEPAPER</p>
                   <button
                     className="modal-close cursor-pointer px-3"
-                    onClick={isBtnVisible ? handleModal : handleBtnVisible}
+                    // onClick={isBtnVisible ? handleModal : handleBtnVisible}
+                    onClick={handleModal}
                   >
                     <AiOutlineClose className="text-black text-xl cursor-pointer" />
                   </button>

@@ -5,6 +5,7 @@ import ChartModal from "../modals/chart-modal";
 import DappsModal from "../modals/dapps-modal";
 import BurnedModal from "../modals/burned-modal";
 import RubicModal from "../modals/rubic-modal";
+import AboutModal from "../modals/about-modal";
 
 const Topbar = () => {
   const [tikiPrice, setTikiPrice] = React.useState(0.09);
@@ -69,6 +70,7 @@ const Topbar = () => {
   const [visibleChart, setVisibleChart] = React.useState(false);
   const [visibleDapps, setVisibleDapps] = React.useState(false);
   const [visibleBurned, setVisibleBurned] = React.useState(false);
+  const [visibleAbout, setVisibleAbout] = React.useState(false);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [visibleBg, setVisibleBg] = React.useState(false);
 
@@ -111,11 +113,19 @@ const Topbar = () => {
     }
   };
 
+  const handleAboutModal = () => {
+    setVisibleAbout(!visibleAbout);
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
+  };
+
   const hideAllModals = () => {
     setVisibleBuy(false);
     setVisibleDapps(false);
     setVisibleChart(false);
     setVisibleBurned(false);
+    setVisibleAbout(false);
     const rubicWidgetRoot = document.getElementById("rubic-widget-root");
     rubicWidgetRoot.style.display = "none";
     setVisibleBg(false);
@@ -156,9 +166,9 @@ const Topbar = () => {
       >
         BURNED: {burn}
       </a>
-      <a href="/" className="text-xl">
+      <button onClick={handleAboutModal} className="text-xl">
         SUPPLY: {supply}
-      </a>
+      </button>
     </div>
   );
 
@@ -201,6 +211,7 @@ const Topbar = () => {
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleBurned && <BurnedModal handleModal={handleBurnedModal} />}
+      {visibleAbout && <AboutModal handleModal={handleAboutModal} />}
       {visibleBg && (
         <div
           onClick={hideAllModals}

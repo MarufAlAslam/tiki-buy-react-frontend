@@ -10,12 +10,12 @@ main.main {
   cursor: url(../img/hand.ico), auto !important;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
-*::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-* {
+body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -71,13 +71,37 @@ button.btn.play-pause {
   z-index: 10000000;
 }
 
-.scrollable {
+/* .scrollable {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+} */
+.scrollable {
+  height: 300px;
+  overflow-y: scroll;
+  padding-right: 15px;
 }
 
+.scrollable::-webkit-scrollbar {
+  width: 8px !important;
+  border-radius: 3px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: #000 !important;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #00f902 !important;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #00f902 !important;
+}
+
+.scrollable::-webkit-scrollbar-button {
+  display: none !important;
+}
 div#rubic-widget-root {
   display: none;
   position: fixed;
