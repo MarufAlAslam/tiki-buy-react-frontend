@@ -145,15 +145,15 @@ const Topbar = () => {
       >
         BUY BUY BUY BUY
       </button>
-      <a
-        href="https://www.coingecko.com/en/global-charts"
-        target="_blank"
-        // onClick={handleBuyModal}
+      <button
+        // href="https://www.coingecko.com/en/global-charts"
+        // target="_blank"
+        onClick={handleChartModal}
         className="text-xl"
         rel="noreferrer"
       >
         TIKI PRICE: ${tikiPrice}
-      </a>
+      </button>
       <button onClick={handleDappsModal} className="text-xl">
         REWARDS: BNB
       </button>
