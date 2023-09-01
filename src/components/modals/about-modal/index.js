@@ -5,6 +5,7 @@ import Typewriter from "typewriter-effect";
 import typingSound from "../../../assets/music/typing.mp3";
 
 const AboutModal = ({ handleModal, isMutted }) => {
+  console.log("isMutted", isMutted);
   // play typing sound when modal is opened
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const audio = new Audio(typingSound);
@@ -21,11 +22,7 @@ const AboutModal = ({ handleModal, isMutted }) => {
   );
 
   useEffect(() => {
-    if (isMutted) {
-      audio.muted = true;
-    } else {
-      audio.muted = false;
-    }
+    audio.muted = isMutted;
   }, [audio, isMutted]);
 
   // stop typing sound when modal is closed

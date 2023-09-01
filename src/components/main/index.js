@@ -137,6 +137,7 @@ const Main = ({ handleMute }) => {
     setVisibleMusic(false);
     setVisibleTwitter(false);
     setVisibleTelegram(false);
+    setVisibleChart(false);
 
     if (windowWidth < 768) {
       setVisibleBg(false);
@@ -153,6 +154,7 @@ const Main = ({ handleMute }) => {
   const handleMuteBtn = () => {
     setIsMutted(!isMutted);
     handleMute();
+    hideAllModals();
   };
 
   return (
@@ -189,16 +191,16 @@ const Main = ({ handleMute }) => {
             <img src={buy} className="block mx-auto mb-2" alt="" />
             <span className="text-white">BUY</span>
           </button>
-          <a
-            href="https://www.coingecko.com/en/global-charts"
-            target="_blank"
-            rel="noreferrer"
+          <button
+            // href="https://www.coingecko.com/en/global-charts"
+            // target="_blank"
+            // rel="noreferrer"
             className="btn text-center modal-btn"
-            // onClick={handleChartModal}
+            onClick={handleChartModal}
           >
             <img src={chart} className="block mx-auto mb-2" alt="" />
             <span className="text-white">CHART</span>
-          </a>
+          </button>
           <button
             className="btn text-center modal-btn"
             onClick={handleDappsModal}

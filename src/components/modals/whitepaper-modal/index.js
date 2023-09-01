@@ -29,38 +29,54 @@ const WhitepaperModal = ({ handleModal }) => {
             className="modal-bg fixed top-0 left-0 bg-black opacity-25 z-10 w-full h-screen"
             onClick={handleModal}
           ></div> */}
-          <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
-            <div className="modal-header bg-[#00F902] rounded-t-[10px]">
-              <div className="flex justify-between items-center p-2">
-                <p className="text-xl text-black pl-3">WHITEPAPER</p>
-                <button
-                  className="modal-close cursor-pointer px-3"
-                  onClick={isBtnVisible ? handleModal : handleBtnVisible}
-                >
-                  <AiOutlineClose className="text-black text-xl cursor-pointer" />
-                </button>
+          {isBtnVisible ? (
+            <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
+              <div className="modal-header bg-[#00F902] rounded-t-[10px]">
+                <div className="flex justify-between items-center p-2">
+                  <p className="text-xl text-black pl-3">WHITEPAPER</p>
+                  <button
+                    className="modal-close cursor-pointer px-3"
+                    onClick={isBtnVisible ? handleModal : handleBtnVisible}
+                  >
+                    <AiOutlineClose className="text-black text-xl cursor-pointer" />
+                  </button>
+                </div>
               </div>
-            </div>
-            <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-              {isBtnVisible ? (
-                <a
-                  href={pdfFile}
-                  target="_blank"
+              <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
+                <button
+                  // href={pdfFile}
+                  onClick={handleBtnVisible}
+                  // target="_blank"
                   rel="noreferrer"
                   className="text-[#00f902] text-xl uppercase block"
                 >
                   VIEW WHITEPAPER
-                </a>
-              ) : (
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="modal md:min-w-[1000px] min-w-['95%'] md:w-[1000px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
+              <div className="modal-header bg-[#00F902] rounded-t-[10px]">
+                <div className="flex justify-between items-center p-2">
+                  <p className="text-xl text-black pl-3">WHITEPAPER</p>
+                  <button
+                    className="modal-close cursor-pointer px-3"
+                    onClick={isBtnVisible ? handleModal : handleBtnVisible}
+                  >
+                    <AiOutlineClose className="text-black text-xl cursor-pointer" />
+                  </button>
+                </div>
+              </div>
+              <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
                 <iframe
                   src={pdfFile}
                   width={"100%"}
                   height={"400px"}
                   frameborder="0"
                 ></iframe>
-              )}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Draggable>
     </div>

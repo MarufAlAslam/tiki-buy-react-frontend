@@ -78,6 +78,16 @@ button.btn.play-pause {
   align-items: flex-start;
 }
 
+div#rubic-widget-root {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  z-index: 100000000000000;
+}
+
 @media screen and (max-width: 992px) {
   marquee a {
     margin: 0 20px;

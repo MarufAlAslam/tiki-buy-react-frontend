@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 import React, { useEffect } from "react";
-import BuyModal from "../modals/buy-modal";
+// import BuyModal from "../modals/buy-modal";
 import ChartModal from "../modals/chart-modal";
 import DappsModal from "../modals/dapps-modal";
 import BurnedModal from "../modals/burned-modal";
+import RubicModal from "../modals/rubic-modal";
 
 const Topbar = () => {
   const [tikiPrice, setTikiPrice] = React.useState(0.09);
@@ -80,11 +81,16 @@ const Topbar = () => {
   }, []);
 
   const handleBuyModal = () => {
-    setVisibleBuy(!visibleBuy);
+    setVisibleBg(true);
+    // setVisibleBuy(!visibleBuy);
+    // if (windowWidth < 768) {
+    //   setVisibleBg(true);
+    // }
+    // get rubic-widget-root id from public/index.html
+    const rubicWidgetRoot = document.getElementById("rubic-widget-root");
 
-    if (windowWidth < 768) {
-      setVisibleBg(true);
-    }
+    // display Rubic Widget
+    rubicWidgetRoot.style.display = "flex";
   };
   const handleChartModal = () => {
     setVisibleChart(!visibleChart);
@@ -110,6 +116,9 @@ const Topbar = () => {
     setVisibleDapps(false);
     setVisibleChart(false);
     setVisibleBurned(false);
+    const rubicWidgetRoot = document.getElementById("rubic-widget-root");
+    rubicWidgetRoot.style.display = "none";
+    setVisibleBg(false);
 
     if (windowWidth < 768) {
       setVisibleBg(false);
@@ -117,15 +126,15 @@ const Topbar = () => {
   };
   const scrollableDiv = (
     <div className=" text-[#00F902] px-4 h-[60px] flex gap-10 justify-between items-center">
-      <a
-        href="https://rubic.exchange/widget"
-        target="_blank"
-        // onClick={handleBuyModal}
+      <button
+        // href="https://rubic.exchange/widget"
+        // target="_blank"
+        onClick={handleBuyModal}
         className="text-xl"
         rel="noreferrer"
       >
         BUY BUY BUY BUY
-      </a>
+      </button>
       <a
         href="https://www.coingecko.com/en/global-charts"
         target="_blank"
@@ -138,9 +147,15 @@ const Topbar = () => {
       <button onClick={handleDappsModal} className="text-xl">
         REWARDS: BNB
       </button>
-      <button onClick={handleBurnedModal} className="text-xl">
+      <a
+        href="https://bscscan.com/"
+        target="_blank"
+        // onClick={handleBurnedModal}
+        className="text-xl"
+        rel="noreferrer"
+      >
         BURNED: {burn}
-      </button>
+      </a>
       <a href="/" className="text-xl">
         SUPPLY: {supply}
       </a>
@@ -182,7 +197,7 @@ const Topbar = () => {
   return (
     // eslint-disable-next-line jsx-a11y/no-distracting-elements
     <>
-      {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
+      {visibleBuy && <RubicModal handleModal={handleBuyModal} />}
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleBurned && <BurnedModal handleModal={handleBurnedModal} />}

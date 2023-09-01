@@ -37,14 +37,29 @@ const ChartModal = ({ handleModal }) => {
                 </button>
               </div>
             </div>
-            <div className="modal-body rounded-b-[10px] bg-black border-2 border-[#00f902]">
-              <iframe
-                src="https://www.coingecko.com/en/global-charts"
-                frameborder="0"
-                scrolling="yes"
-                width={"100%"}
-                height={"350px"}
-              ></iframe>
+            <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902]">
+              <div
+                className="btns"
+                // onClick={handleBtnVisible}
+              >
+                <a
+                  href="https://www.coingecko.com/en/coins/bitcoin"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#00f902] text-xl uppercase block"
+                >
+                  Bitcoin
+                </a>
+                <a
+                  href="https://www.coingecko.com/en/coins/ethereum"
+                  target="_blank"
+                  // onClick={handleBtnVisible}
+                  className="text-[#00f902] text-xl uppercase block"
+                  rel="noreferrer"
+                >
+                  Ethereum
+                </a>
+              </div>
             </div>
           </div>
         </div>
