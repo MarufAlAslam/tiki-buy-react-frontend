@@ -32,7 +32,7 @@ const DappsModal = ({ handleModal }) => {
             className="modal-bg fixed top-0 left-0 bg-black opacity-25 z-10 w-full h-screen"
             onClick={handleModal}
           ></div> */}
-          <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
+          <div className="modal md:min-w-[340px] min-w-[340px] md:w-[340px] w-[340px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
             <div className="modal-header bg-[#00F902] rounded-t-[10px]">
               <div className="flex justify-between items-center p-2">
                 <p className="text-xl text-black pl-3">DAPPS</p>
@@ -91,7 +91,7 @@ const DappsModal = ({ handleModal }) => {
             className="modal-bg fixed top-0 left-0 bg-black opacity-25 z-10 w-full h-screen"
             onClick={handleModal}
           ></div> */}
-            <div className="modal md:min-w-[500px] min-w-[350px] md:w-[500px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
+            <div className="modal md:min-w-[340px] min-w-[340px] md:w-[340px] w-[340px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
               <div className="modal-header bg-[#00F902] rounded-t-[10px]">
                 <div className="flex justify-between items-center p-2">
                   <p className="text-xl text-black pl-3">DAPPS</p>
