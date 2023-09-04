@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Draggable from "react-draggable";
 import { AiOutlineClose } from "react-icons/ai";
 
-import pdfFile from "../../../assets/pdf/sample.pdf";
+// import pdfFile from "../../../assets/pdf/sample.pdf";
 
 const WhitepaperModal = ({ handleModal }) => {
   const bounds = {
@@ -27,6 +27,7 @@ const WhitepaperModal = ({ handleModal }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   return (
     <div className="flex justify-center items-center fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
       {windowWidth < 768 ? (
@@ -81,20 +82,18 @@ const WhitepaperModal = ({ handleModal }) => {
                   height={"400px"}
                   frameborder="0"
                 ></iframe> */}
-                <object
-                  data={pdfFile}
-                  type="application/pdf"
+                {/* <iframe
+                  src={pdfFile}
+                  width={"100%"}
+                  height={"400px"}
+                  frameborder="0"
+                ></iframe> */}
+                <embed
+                  src="http://docs.google.com/gview?
+url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true"
                   width="100%"
                   height="400px"
-                >
-                  <p>
-                    Unable to display PDF file.{" "}
-                    <a href={pdfFile}>
-                      Download
-                    </a>{" "}
-                    instead.
-                  </p>
-                </object>
+                />
               </div>
             </div>
           )}
@@ -151,12 +150,18 @@ const WhitepaperModal = ({ handleModal }) => {
                   </div>
                 </div>
                 <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-                  <iframe
+                  {/* <iframe
                     src={pdfFile}
                     width={"100%"}
                     height={"400px"}
                     frameborder="0"
-                  ></iframe>
+                  ></iframe> */}
+                  <embed
+                    src="http://docs.google.com/gview?
+url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true"
+                    width="100%"
+                    height="400px"
+                  />
                 </div>
               </div>
             )}

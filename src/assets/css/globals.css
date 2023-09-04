@@ -151,4 +151,10 @@ div#rubic-widget-root {
   .modal-bg {
     z-index: 30000000;
   }
+  .buttons {
+    padding-bottom: 55px;
+  }
+  .modal-btn img {
+    height: 50px;
+  }
 }

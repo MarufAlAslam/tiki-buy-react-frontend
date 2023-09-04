@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import ChartModal from "../modals/chart-modal";
 import DappsModal from "../modals/dapps-modal";
 import BurnedModal from "../modals/burned-modal";
-import RubicModal from "../modals/rubic-modal";
+// import RubicModal from "../modals/rubic-modal";
 import AboutModal from "../modals/about-modal";
 import BuyModal from "../modals/buy-modal";
 
