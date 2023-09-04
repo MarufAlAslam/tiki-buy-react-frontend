@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { useEffect } from "react";
 import Draggable from "react-draggable";
@@ -60,7 +61,7 @@ const WhitepaperModal = ({ handleModal }) => {
               </div>
             </div>
           ) : (
-            <div className="modal md:min-w-[1000px] min-w-['95%'] md:w-[1000px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
+            <div className="modal md:min-w-[1000px] min-w-[320px] md:w-[1000px] w-[350px] max-w-[95%] fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-20">
               <div className="modal-header bg-[#00F902] rounded-t-[10px]">
                 <div className="flex justify-between items-center p-2">
                   <p className="text-xl text-black pl-3">WHITEPAPER</p>
@@ -74,12 +75,26 @@ const WhitepaperModal = ({ handleModal }) => {
                 </div>
               </div>
               <div className="modal-body p-[22px] rounded-b-[10px] bg-black border-2 border-[#00f902] pb-[50px]">
-                <iframe
+                {/* <iframe
                   src={pdfFile}
                   width={"100%"}
                   height={"400px"}
                   frameborder="0"
-                ></iframe>
+                ></iframe> */}
+                <object
+                  data={pdfFile}
+                  type="application/pdf"
+                  width="100%"
+                  height="400px"
+                >
+                  <p>
+                    Unable to display PDF file.{" "}
+                    <a href={pdfFile}>
+                      Download
+                    </a>{" "}
+                    instead.
+                  </p>
+                </object>
               </div>
             </div>
           )}
