@@ -6,6 +6,7 @@ import DappsModal from "../modals/dapps-modal";
 import BurnedModal from "../modals/burned-modal";
 import RubicModal from "../modals/rubic-modal";
 import AboutModal from "../modals/about-modal";
+import BuyModal from "../modals/buy-modal";
 
 const Topbar = () => {
   const [tikiPrice, setTikiPrice] = React.useState(0.09);
@@ -84,15 +85,15 @@ const Topbar = () => {
 
   const handleBuyModal = () => {
     setVisibleBg(true);
-    // setVisibleBuy(!visibleBuy);
-    // if (windowWidth < 768) {
-    //   setVisibleBg(true);
-    // }
+    setVisibleBuy(!visibleBuy);
+    if (windowWidth < 768) {
+      setVisibleBg(true);
+    }
     // get rubic-widget-root id from public/index.html
-    const rubicWidgetRoot = document.getElementById("rubic-widget-root");
+    // const rubicWidgetRoot = document.getElementById("rubic-widget-root");
 
     // display Rubic Widget
-    rubicWidgetRoot.style.display = "flex";
+    // rubicWidgetRoot.style.display = "flex";
   };
   const handleChartModal = () => {
     setVisibleChart(!visibleChart);
@@ -207,7 +208,7 @@ const Topbar = () => {
   return (
     // eslint-disable-next-line jsx-a11y/no-distracting-elements
     <>
-      {visibleBuy && <RubicModal handleModal={handleBuyModal} />}
+      {visibleBuy && <BuyModal handleModal={handleBuyModal} />}
       {visibleChart && <ChartModal handleModal={handleChartModal} />}
       {visibleDapps && <DappsModal handleModal={handleDappsModal} />}
       {visibleBurned && <BurnedModal handleModal={handleBurnedModal} />}
